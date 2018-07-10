@@ -85,7 +85,11 @@ while True:
                                                   decision_threshold=0.75)
                 # Save
                 tagged_filename = "frame_{}_tagged.png".format(name)
-                imsave(os.path.join(path, tagged_filename), img_tagged)
+                tagged_filepath = os.path.join(path, tagged_filename)
+                imsave(tagged_filepath, img_tagged)
+                # Show
+                with Image.open(tagged_filepath) as img:
+                    img.show()
 
 cam.release()
 cv2.destroyAllWindows()
